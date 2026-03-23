@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> №1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>📋 Отчёт по лабораторной работе №1</h1>
+    
+
+    <!-- Пункт 1: подключение по SSH -->
+    <section class="task">
+        <h2>1. Подключение к учебному серверу по SSH</h2>
+        <div class="subtask">
+            <h3>Настройка PuTTY</h3>
+            <div class="description">
+                <p>Для подключения использовалась программа PuTTY. Настройки:</p>
+                <ul>
+                    <li><strong>Host Name:</strong> <code>kubsu-dev.ru</code></li>
+                    <li><strong>Port:</strong> <code>58528</code> </li>
+                    <li><strong>Connection type:</strong> SSH</li>
+                </ul>
+            </div>
+            <div class="screenshot">
+                <img src="0.png" alt="Настройки PuTTY">
+                <div class="caption">Скриншот 0: Настройки PuTTY</div>
+            </div>
+        </div>
+        <div class="subtask">
+            <h3>Авторизация и приветствие</h3>
+            <div class="description">
+                <p>Введён логин <code>u82323</code> и пароль. После успешного входа отображается приветствие Ubuntu.</p>
+            </div>
+            <div class="screenshot">
+                <img src="1.png" alt="Успешный вход">
+                <div class="caption">Скриншот 1: Успешный вход</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Пункт 2: ping -->
+    <section class="task">
+        <h2>2. Определение IP-адреса kubsu.ru</h2>
+        <div class="command">
+            <strong>Команда:</strong> <code>ping -c 5 kubsu.ru</code>
+        </div>
+        <div class="description">
+            <p>Утилита <code>ping</code> отправляет ICMP-запросы. В первой строке вывода указан IP-адрес.</p>
+            <p><strong>Результат:</strong> IP-адрес сервера <code>kubsu.ru</code> – <strong>185.13.84.92</strong>. Все 5 пакетов доставлены, потерь нет, среднее время ответа – 3.45 мс.</p>
+        </div>
+        <div class="screenshot">
+            <img src="2.png" alt="ping kubsu.ru">
+            <div class="caption">Скриншот 2: Результат ping</div>
+        </div>
+    </section>
+
+    <!-- Пункт 3: nslookup -->
+    <section class="task">
+        <h2>3. Получение A и MX записей</h2>
+
+        <div class="subtask">
+            <h3>A-запись kubsu.ru</h3>
+            <div class="command"><code>nslookup -type=A kubsu.ru</code></div>
+            <div class="description">Адрес: <strong>185.13.84.92</strong> (совпадает с результатом ping).</div>
+            <div class="screenshot"><img src="3.1.png" alt="nslookup A kubsu.ru"><div class="caption">Скриншот 3.1: A-запись kubsu.ru</div></div>
+        </div>
+
+        <div class="subtask">
+            <h3>MX-запись kubsu.ru</h3>
+            <div class="command"><code>nslookup -type=MX kubsu.ru</code></div>
+            <div class="description">
+                <p>Получены три почтовых сервера:</p>
+                <ul>
+                    <li>приоритет 10: <code>mx2.kubannet.ru</code></li>
+                    <li>приоритет 20: <code>mx.kubannet.ru</code></li>
+                    <li>приоритет 50: <code>mx.kubsu.ru</code></li>
+                </ul>
+            </div>
+            <div class="screenshot"><img src="3.2.png" alt="nslookup MX kubsu.ru"><div class="caption">Скриншот 3.2: MX-запись kubsu.ru</div></div>
+        </div>
+
+        <div class="subtask">
+            <h3>A-запись kubsu-dev.ru</h3>
+            <div class="command"><code>nslookup -type=A kubsu-dev.ru</code></div>
+            <div class="description">IP-адрес: <strong>212.192.134.135</strong>.</div>
+            <div class="screenshot"><img src="3.3.png" alt="nslookup A kubsu-dev.ru"><div class="caption">Скриншот 3.3: A-запись kubsu-dev.ru</div></div>
+        </div>
+
+        <div class="subtask">
+            <h3>MX-запись kubsu-dev.ru</h3>
+            <div class="command"><code>nslookup -type=MX kubsu-dev.ru</code></div>
+            <div class="description">
+                <p>Домен не имеет почтовых серверов (ответ <code>No answer</code>). В авторитативном ответе указаны DNS-серверы:</p>
+                <ul>
+                    <li>origin: <code>nsl.nameself.com</code></li>
+                    <li>mail addr: <code>support.regtime.net</code></li>
+                </ul>
+            </div>
+            <div class="screenshot"><img src="3.4.png" alt="nslookup MX kubsu-dev.ru"><div class="caption">Скриншот 3.4: MX-запись kubsu-dev.ru</div></div>
+        </div>
+    </section>
+
+    <!-- Пункт 4: whois -->
+    <section class="task">
+        <h2>4. Дата регистрации доменов (whois)</h2>
+        <div class="subtask">
+            <h3>kubsu.ru</h3>
+            <div class="command"><code>whois kubsu.ru</code></div>
+            <div class="description">
+                <p>Дата регистрации: <strong>1998-03-28T12:18:30Z</strong> (28 марта 1998 года).<br>
+                Срок действия оплачен до <strong>30 апреля 2026 года</strong>.</p>
+            </div>
+            <div class="screenshot"><img src="4.1.png" alt="whois kubsu.ru"><div class="caption">Скриншот 4.1: whois kubsu.ru</div></div>
+        </div>
+        <div class="subtask">
+            <h3>kubsu-dev.ru</h3>
+            <div class="command"><code>whois kubsu-dev.ru</code></div>
+            <div class="description">
+                <p>Дата регистрации: <strong>2020-02-12T15:55:06Z</strong> (12 февраля 2020 года).<br>
+                Срок действия оплачен до <strong>12 февраля 2027 года</strong>.</p>
+            </div>
+            <div class="screenshot"><img src="4.2.png" alt="whois kubsu-dev.ru"><div class="caption">Скриншот 4.2: whois kubsu-dev.ru</div></div>
+        </div>
+    </section>
+
+    <!-- Пункт 5: создание веб-страницы и размещение в Git -->
+    <section class="task">
+        <h2>5. Создание веб-страницы и работа с Git</h2>
+
+        <div class="subtask">
+            <h3>5.1. Подготовка локального репозитория</h3>
+            <div class="description">В папке <code>laba1</code> собраны все скриншоты и файлы <code>index.html</code>, <code>style.css</code>.</div>
+            <div class="screenshot"><img src="5.1.png" alt="Содержимое папки"><div class="caption">Скриншот 5.1: Локальные файлы</div></div>
+        </div>
+
+        <div class="subtask">
+            <h3>5.2. Инициализация Git и отправка на GitHub</h3>
+            <div class="command"><pre>git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/MinhThuTanya/web-hw1.git
+git push -u origin main</pre></div>
+            <div class="description">Репозиторий создан, файлы добавлены, отправлены на GitHub.</div>
+            <div class="screenshot"><img src="5.2.png" alt="Git push"><div class="caption">Скриншот 5.2: git push</div></div>
+        </div>
+
+        <div class="subtask">
+            <h3>5.3. Настройка SSH-ключа на сервере</h3>
+            <div class="description">Сгенерирован SSH-ключ (ed25519), публичная часть добавлена в GitHub.</div>
+            <div class="screenshot"><img src="5.3.png" alt="Генерация ключа"><div class="caption">Скриншот 5.3: ssh-keygen</div></div>
+            <div class="screenshot"><img src="5.4.png" alt="Добавление ключа в GitHub"><div class="caption">Скриншот 5.4: Ключ в GitHub</div></div>
+        </div>
+
+        <div class="subtask">
+            <h3>5.4. Клонирование репозитория на сервер</h3>
+            <div class="command"><code>git clone git@github.com:MinhThuTanya/web-hw1.git</code></div>
+            <div class="description">Репозиторий склонирован в домашнюю папку.</div>
+            <div class="screenshot"><img src="5.5.png" alt="git clone"><div class="caption">Скриншот 5.5: Клонирование</div></div>
+        </div>
+
+        <div class="subtask">
+            <h3>5.5. Перенос файлов в www</h3>
+            <div class="command"><pre>mkdir -p ~/www/hw1
+cp -r ~/web-hw1/* ~/www/hw1/
+ls ~/www/hw1/</pre></div>
+            <div class="description">Файлы скопированы в веб-доступный каталог. Список подтверждает наличие всех скриншотов и <code>index.html</code>.</div>
+            <div class="screenshot"><img src="5.6.png" alt="Копирование и ls"><div class="caption">Скриншот 5.6: Перенос в www</div></div>
+        </div>
+
+        <div class="subtask">
+            <h3>5.6. Проверка доступа к странице</h3>
+            <div class="description">Страница доступна по адресу <code>http://u82323.kubsu-dev.ru/hw1/index.html</code> (проверено визуально).</div>
+        </div>
+    </section>
+
+    <!-- Пункт 6: копирование через SFTP (FileZilla) -->
+    <section class="task">
+        <h2>6. Копирование файлов через SFTP (FileZilla)</h2>
+
+        <div class="subtask">
+            <h3>6.1. Подключение к серверу</h3>
+            <div class="description">Соединение установлено по SFTP (хост <code>kubsu-dev.ru</code>, порт 58528).</div>
+            <div class="screenshot"><img src="6.1.png" alt="Подключение FileZilla"><div class="caption">Скриншот 6.1: Настройка подключения</div></div>
+        </div>
+
+        <div class="subtask">
+            <h3>6.2. Навигация по каталогам</h3>
+            <div class="description">В правой панели виден каталог <code>/home/u82323/www/hw1</code>.</div>
+            <div class="screenshot"><img src="6.2.png" alt="Структура удалённого каталога"><div class="caption">Скриншот 6.2: Удалённые папки</div></div>
+            <div class="screenshot"><img src="6.3.png" alt="Содержимое hw1"><div class="caption">Скриншот 6.3: Файлы в hw1</div></div>
+        </div>
+
+        <div class="subtask">
+            <h3>6.3. Скачивание файлов</h3>
+            <div class="description">Все файлы скопированы на локальный компьютер (статус «Файл передан успешно»).</div>
+            <div class="screenshot"><img src="6.4.png" alt="Скачивание через FileZilla"><div class="caption">Скриншот 6.4: Передача файлов</div></div>
+        </div>
+
+        <div class="subtask">
+            <h3>6.4. Обновление репозитория</h3>
+            <div class="description">Новые скриншоты добавлены в локальный Git и отправлены на GitHub.</div>
+            <div class="screenshot"><img src="6.5.png" alt="git commit и push"><div class="caption">Скриншот 6.5: Добавление скриншотов в Git</div></div>
+        </div>
+
+        <div class="subtask">
+            <h3>6.5. Обновление файлов на сервере</h3>
+            <div class="description">На сервере выполнен <code>git pull</code> и повторное копирование в <code>~/www/hw1</code>.</div>
+            <div class="screenshot"><img src="6.6.png" alt="git pull на сервере"><div class="caption">Скриншот 6.6: Обновление на сервере</div></div>
+        </div>
+    </section>
+
+    <hr>
+    <p style="text-align: center; color: #b45f06;">Отчёт составлен на основе выполненных скриншотов. Все этапы работы задокументированы.</p>
+</div>
+</body>
+</html>
